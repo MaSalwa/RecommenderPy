@@ -1,2 +1,2 @@
 # RecommenderPy
-Recommender System written in Python
+Recommender System written in Python 3
