@@ -1,8 +1,10 @@
+from item_mean_model_provider import ItemMeanModelProvider
+import pandas as pd
 """
 The mean_based_recommender will provide non personnalized 
 recommendations based on the items mean ratings
 """
-class ItemMeanModelProvider:
+class MeanItemBasedRecommender(ItemMeanModelProvider):
     """
     ItemMeanModel Provider class provides the top N highest rated items
     First, it sets the number of top rated items.
@@ -16,8 +18,9 @@ class ItemMeanModelProvider:
         integer -- TBD
     """
 
-    def __init__(self, num_top_rated):
+    def __init__(self, num_top_rated, ratings):
         self.num_top_rated = num_top_rated  
+        self.ratings = ratings
     @property
     def num_top_rated(self):
         return self.__num_top_rated
@@ -30,3 +33,8 @@ class ItemMeanModelProvider:
             raise ValueError("invalid number of top rated items, should be a positive integer")
         else:
             self.__num_top_rated = num_top_rated
+    def n_highest(self):
+        means = self.get().means
+        df_means = pd.DataFrame.from_dict(means, orient = "index")
+        df_means.columns = ['rating']
+        return df_means.nlargest(self.num_top_rated, ['rating'])
