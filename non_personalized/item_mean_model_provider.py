@@ -12,16 +12,8 @@ class ItemMeanModelProvider(ItemMeanModel):
             raise TypeError("unknown data type")
         else:
             self.__ratings = ratings
-    def compute_mean(self):
+    def __compute_mean(self):
         df_means = self.ratings.groupby(['userID'])['rating'].mean()
         return df_means.to_dict()
     def get(self):
-        return ItemMeanModel(self.compute_mean())
-
-
-# if __name__ == "__main__":
-#     data = pd.read_csv("/home/salwamaatoug/recommender_material/nonpers-assignment/data/ratings.csv")
-#     del data['timestamp']
-#     data.columns = ['userID', 'itemID', 'rating']
-#     immp = ItemMeanModelProvider(data)
-#     print(immp.get().get_mean_rating(2024))
+        return ItemMeanModel(self.__compute_mean())
