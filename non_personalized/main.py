@@ -1,6 +1,9 @@
 from mean_item_based_recommender import MeanItemBasedRecommender
 import pandas as pd
-
+"""
+The mean_based_recommender will provide non personnalized 
+recommendations based on the items mean ratings
+"""
 def main():
     data = pd.read_csv("/home/salwamaatoug/recommender_material/nonpers-assignment/data/ratings.csv")
     del data['timestamp']

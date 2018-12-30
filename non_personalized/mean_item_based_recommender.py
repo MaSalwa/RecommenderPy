@@ -1,9 +1,6 @@
 from item_mean_model_provider import ItemMeanModelProvider
 import pandas as pd
-"""
-The mean_based_recommender will provide non personnalized 
-recommendations based on the items mean ratings
-"""
+
 class MeanItemBasedRecommender(ItemMeanModelProvider):
     """
     ItemMeanModel Provider class provides the top N highest rated items
@@ -15,7 +12,7 @@ class MeanItemBasedRecommender(ItemMeanModelProvider):
         ValueError -- invalid number of top rated items, should be a positive integer
     
     Returns:
-        integer -- TBD
+        data frame -- top rated item ids with their corresponding ratings
     """
 
     def __init__(self, num_top_rated, ratings):

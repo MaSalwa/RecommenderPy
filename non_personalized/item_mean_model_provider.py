@@ -1,6 +1,18 @@
 from item_mean_model import ItemMeanModel
 import pandas as pd
 class ItemMeanModelProvider(ItemMeanModel):
+    """This class uses the ItemMeanModel object to compute mean ratings for each itemID
+    
+    Arguments:
+        ItemMeanModel {[object]} -- [mean rating structure]
+    
+    Raises:
+        TypeError -- [unknown data type]
+    
+    Returns:
+        [dictionary] -- [mean ratings mapped to their corresponding item IDs]
+    """
+
     def __init__(self, ratings):
         self.ratings = ratings
     @property

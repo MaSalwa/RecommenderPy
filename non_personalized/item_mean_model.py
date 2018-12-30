@@ -1,4 +1,14 @@
 class ItemMeanModel:
+    """Item Mean Model defines the mean ratings data structure
+    It turns the mean ratings dictionary to a frozenset
+    
+    Raises:
+        TypeError -- invalid type, should be a dictionary
+    
+    Returns:
+        dictionary -- mean ratings {itemID : mean_rating}
+    """
+
     def __init__(self, means):
         self.means = means
         self.__item_means = frozenset(means.items())
